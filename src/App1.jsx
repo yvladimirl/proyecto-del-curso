@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
+import axios from "axios"
+import "./App.css"
 
-function App() {
+function App1() {
   const API_URL = import.meta.env.VITE_API_URL
 
   const [criptos,setCriptos] = useState()
 
   useEffect(() => {
-    fetch(`${API_URL}assets`)
-    .then((resp) => resp.json())
+    axios.get(`${API_URL}assets`)
     .then((data) => {
-      setCriptos(data.data)
+          setCriptos(data.data.data)
     })
     .catch(() => {
       console.error("La petición falló.")
@@ -30,4 +31,4 @@ function App() {
   )
 }
 
-export default App
+export default App1
